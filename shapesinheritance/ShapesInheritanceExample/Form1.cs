@@ -24,14 +24,14 @@ namespace ShapesInheritanceExample
         public Form1()
         {
             InitializeComponent();
-
+            ShapeFactory factory = new ShapeFactory();
             //add a few shapes
-            shapes.Add(new Circle(Color.Purple, 10, 100, 100)); //create a red circle at (10,100) of radius 100
-            shapes.Add(new Circle(Color.Chartreuse, 100, 10, 50)); //apparently it's green
-            shapes.Add(new Rectangle(Color.Blue, 150, 150, 50, 100));
-            shapes.Add(new Square(Color.Green, 175, 50, 75));
-            shapes.Add(new Circle(Color.Red, 10, 100, 100));
-
+            /* shapes.Add(new Circle(Color.Purple, 10, 100, 100)); //create a red circle at (10,100) of radius 100
+             shapes.Add(new Circle(Color.Chartreuse, 100, 10, 50)); //apparently it's green
+             shapes.Add(new Rectangle(Color.Blue, 150, 150, 50, 100));
+             shapes.Add(new Square(Color.Green, 175, 50, 75));
+             shapes.Add(new Circle(Color.Red, 10, 100, 100));
+            */
 
             //add some random shapes
             Random rand = new Random(77887);
@@ -48,22 +48,52 @@ namespace ShapesInheritanceExample
                 Color newColour = Color.FromArgb(128, red, green, blue); //128 is semi transparent
 
                 int shape = rand.Next(4);
-
-                switch(shape)
+                Shape s;
+                try
                 {
-                    case 0 :
-                        shapes.Add(new Circle(newColour, x, y, size));
-                        break;
-                    case 1:
-                        shapes.Add(new Square(newColour, x, y, size));
-                        break;
-                    case 2:
-                        shapes.Add(new Rectangle(newColour, x, y, size, size/2));
-                        break;
-                   /* case 4:
-                        shapes.Add(new Triangle(newColour, x, y, size));
-                        break;*/
+                    switch (shape)
+                    {
+                        /*
+                         case 0 :
+                             s = new Circle(newColour, x, y, size);
+                             shapes.Add(s);
+                             break;
+                         case 1:
+                             shapes.Add(new Square(newColour, x, y, size));
+                             break;
+                         case 2:
+                             shapes.Add(new Rectangle(newColour, x, y, size, size/2));
+                             break;
+                         case 4:
+                             shapes.Add(new Triangle(newColour, x, y, size));
+                             break;*/
+                        case 0:
+                            s = factory.getShape("circle");
+                            s.set(newColour, x, y, size);
+                            shapes.Add(s);// new Circle(newColour, x, y, size));
 
+                            break;
+                        case 1:
+                            s = factory.getShape("rectangle");
+                            s.set(newColour, x, y, size, size);
+                            shapes.Add(s);
+                            break;
+                        case 2:
+                            s = factory.getShape("square");
+                            s.set(newColour, x, y, size, size);
+                            shapes.Add(s);
+                            break;
+                        case 3:
+                            s = factory.getShape("triangle");
+                            s.set(newColour, x, y, size, size);
+                            shapes.Add(s);
+                            break;
+
+                    }
+                }
+                catch (ArgumentException e)
+                {
+                    Console.WriteLine("Invalid shape: " );
 
                 }
             }

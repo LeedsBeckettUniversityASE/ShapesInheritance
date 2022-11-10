@@ -13,6 +13,9 @@ namespace ShapesInheritanceExample
 
         protected Color colour; //shape's colour
         protected int x, y; //not I could use c# properties for this
+        public Shape()
+        {
+        }
         public Shape(Color colour, int x, int y)
         {
 
@@ -21,7 +24,12 @@ namespace ShapesInheritanceExample
             this.y = y; //its y pos
             //can't provide anything else as "shape" is too general
         }
-
+        public virtual void set(Color colour, params int[] list)
+        {
+            this.colour = colour;
+            this.x = list[0];
+            this.y = list[1];
+        }
         public virtual void draw(Graphics g)
         {
             Font drawFont = new Font("Arial", 12);

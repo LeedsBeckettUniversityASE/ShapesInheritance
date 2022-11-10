@@ -8,16 +8,27 @@ using System.Threading.Tasks;
 
 namespace ShapesInheritanceExample
 {
-    class Circle : Shape
+    class Circle2 : Shape
     {
         int radius;
-        public Circle(Color colour, int x, int y, int radius) : base(colour, x, y)
+        public Circle2() : base()
+        {
+
+        }
+        public Circle2(Color colour, int x, int y, int radius) : base(colour, x, y)
         {
 
             this.radius = radius; //the only thingthat is different from shape
         }
 
+        public override void set(Color colour, params int[] list)
+        {
+            //list[0] is x, list[1] is y, list[2] is radius
+            base.set(colour, list[0], list[1]);
+            this.radius = list[2];
 
+
+        }
         public override void draw(Graphics g)
         {
 

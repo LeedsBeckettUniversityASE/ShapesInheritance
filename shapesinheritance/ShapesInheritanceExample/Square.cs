@@ -10,6 +10,10 @@ namespace ShapesInheritanceExample
     class Square:Rectangle
     {
         private int size;
+        public Square() : base()
+        {
+
+        }
         public Square(Color colour, int x, int y, int size) : base(colour, x, y, size, size)
         {
             this.size = size;
