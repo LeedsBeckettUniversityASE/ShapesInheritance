@@ -16,12 +16,7 @@ namespace ShapesInheritanceExample
     {
         ArrayList shapes = new ArrayList();
         
-        
-
-
-
-
-        public Form1()
+                public Form1()
         {
             InitializeComponent();
 
@@ -60,7 +55,7 @@ namespace ShapesInheritanceExample
                     case 2:
                         shapes.Add(new Rectangle(newColour, x, y, size, size/2));
                         break;
-                   /* case 4:
+                   /* case 4: could add another shape
                         shapes.Add(new Triangle(newColour, x, y, size));
                         break;*/
 

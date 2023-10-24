@@ -10,7 +10,7 @@ namespace ShapesInheritanceExample
 {
     class Circle : Shape
     {
-        int radius;
+        protected int radius;
         public Circle(Color colour, int x, int y, int radius) : base(colour, x, y)
         {
 

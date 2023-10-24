@@ -9,7 +9,7 @@ namespace ShapesInheritanceExample
 {
     class Rectangle:Shape
     {
-        int width, height;
+        protected int width, height;
         public Rectangle(Color colour, int x, int y, int width, int height) : base(colour, x, y)
         {
 
